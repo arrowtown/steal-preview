@@ -3,8 +3,7 @@ from hanziconv import HanziConv
 
 class AvSpider(scrapy.Spider):
     name = 'avspider'
-    # start_urls = ['https://avhd101.com/search?q=%E6%A9%8B%E6%9C%AC%E6%9C%89%E8%8F%9C&t=actress']
-
+    
     def __init__(self, name='', **kwargs):
         name = HanziConv.toTraditional(name)
         self.start_urls = [f'https://avhd101.com/search?t=actress&q={name}']  # py36
