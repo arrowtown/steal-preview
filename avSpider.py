@@ -6,7 +6,7 @@ class AvSpider(scrapy.Spider):
     # start_urls = ['https://avhd101.com/search?q=%E6%A9%8B%E6%9C%AC%E6%9C%89%E8%8F%9C&t=actress']
 
     def __init__(self, name='', **kwargs):
-        #name = HanziConv.toTraditional(name)
+        name = HanziConv.toTraditional(name)
         self.start_urls = [f'https://avhd101.com/search?t=actress&q={name}']  # py36
         super().__init__(**kwargs)
         print("获取所有 {} 的视频预览...".format(name))
