@@ -7,4 +7,4 @@ crawling the preview video link of AVHD101
 3. scrapy runspider avSpider.py -a name=桥本有菜 --nolog 
 
 # contributions
-First time to use crawler with python, Hope you gays could make it stonger. JRS come on!
+First time to use crawler with python, Hope you gays could make it stonger. Old driver come on!
