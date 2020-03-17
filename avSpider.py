@@ -1,6 +1,7 @@
 import scrapy
 from hanziconv import HanziConv
 
+page = 0 
 class AvSpider(scrapy.Spider):
     name = 'avspider'
 
@@ -10,14 +11,13 @@ class AvSpider(scrapy.Spider):
         super().__init__(**kwargs)
         print(("名字匹配模式：" if  bool(mode) else "粗略查询模式：")+"获取所有 {} 的视频预览...<br>".format(name))
 
-
     def parse(self, response): 
-
+        global page
         all = response.css('.list li h3 a::attr(href)').getall()
-
         for idx,img in enumerate(all):
             preview = img.replace("/watch?v=", "https://pvtc.mixiancn.com/")+"/preview/pv.m3u8"
-            print("<a href=\""+ preview +"\">"+ str(idx) +": "+ preview + "</a><br>")
+            print("<a href=\""+ preview +"\">"+ str(idx+1+page*60) +": "+ preview + "</a><br>")
+        page+=1
 
         for next_page in response.css('.row.center.fullpage>ul>li>a.pn'):
             yield response.follow(next_page, self.parse)
