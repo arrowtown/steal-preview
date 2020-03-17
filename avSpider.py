@@ -4,11 +4,11 @@ from hanziconv import HanziConv
 class AvSpider(scrapy.Spider):
     name = 'avspider'
 
-    def __init__(self, name='', **kwargs):
+    def __init__(self, name='', mode='',**kwargs):
         name = HanziConv.toTraditional(name)
-        self.start_urls = [f'https://cn.ax101.vip/search?t=actress&q={name}']  # py36
+        self.start_urls = ([f'https://cn.ax101.vip/search?t=actress&q={name}'] if bool(mode) else [f'https://cn.ax101.vip/search?q={name}'])
         super().__init__(**kwargs)
-        print("获取所有 {} 的视频预览...<br>".format(name))
+        print(("名字匹配模式：" if  bool(mode) else "粗略查询模式：")+"获取所有 {} 的视频预览...<br>".format(name))
 
 
     def parse(self, response): 
