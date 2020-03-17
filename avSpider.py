@@ -15,9 +15,9 @@ class AvSpider(scrapy.Spider):
 
         all = response.css('.list li h3 a::attr(href)').getall()
 
-        for img in all:
+        for idx,img in enumerate(all):
             preview = img.replace("/watch?v=", "https://pvtc.mixiancn.com/")+"/preview/pv.m3u8"
-            print(preview)
+            print("<a href=\""+ preview +"\">"+ str(idx)+"</a><br>")
 
         for next_page in response.css('.row.center.fullpage>ul>li>a.pn'):
             yield response.follow(next_page, self.parse)
