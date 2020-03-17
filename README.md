@@ -9,6 +9,7 @@ crawling the preview video link of AVHD101
 # Run as http server (default port 23333)
 1. npm install express --save
 2. node http.js 
+3. httpie host:port/v?a={name}&m=1  // m for accurate mode, no m for fuzzy mode
 
 # contributions
 First time to use crawler with python, Hope you gays could make it stonger. Old driver come on!
